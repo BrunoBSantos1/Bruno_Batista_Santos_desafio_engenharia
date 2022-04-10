@@ -55,7 +55,8 @@ public class LeitorQrCoder {
         Stack<String> ordemCargaRotaNorte = new Stack<>();
         Stack<String> ordemCargaRotaNorteJoias = new Stack<>();
         List<String> listaVendedoresPorPacote = new ArrayList<>();
-        Map<String, Integer> cont = new TreeMap<String, Integer>();
+        Map<String, Integer> cont = new TreeMap<>();
+        
         /*
         Instanciei uma nova lista de strings, agrupando por trincas e a cada trinca adicionado um "." separador, para que
         fosse possível fazer um split(). Com isso irei obter uma nova lista onde os códigos irá está divididos por trincas.
@@ -63,7 +64,6 @@ public class LeitorQrCoder {
         Poderia ter feito um algoritmo para para percorrer o codigo de barras e a cada trinca adicionar um ".", mas por questões
         de práticidade e rápidez, preferir ja intanciar manualmente.
         */
-        
         List<String> list = new ArrayList<>();
         list.add(0, "288.355.555.123.888");
         list.add(1, "335.333.555.584.333");
@@ -364,9 +364,6 @@ public class LeitorQrCoder {
 			cont.put(nome, 0);
 		cont.put(nome, cont.get(nome) + 1);
 	}
-
-	
-
         
         System.out.println("======Questão 1======");
         System.out.println("Centro-Oeste: " + centroOeste.size() + " pacotes");
@@ -379,8 +376,6 @@ public class LeitorQrCoder {
         System.out.println("======Validos=====");
         valido.forEach(x -> System.out.println(x));
         System.out.println("======Invalidos=====");
-        
-        
         invalido.forEach(x -> System.out.println(x));
         
         System.out.println("======Questão 3=======");
@@ -467,25 +462,5 @@ public class LeitorQrCoder {
         
         System.out.println("======Questão 10=======");
         invalido.forEach(x -> System.out.println(x));
-        
-        
-        
-        
-  /*      
-        for(String lista : list){
-            ArrayList<String> codigosSeparados = new ArrayList<>();
-            String[] codBarras = lista.split("[.]");
-            for(int i=0; i < codBarras.length; i++ ){
-                codigosSeparados.add(codBarras[i]);
-                if(codigosSeparados.get(i)!="367"){
-                    System.out.println("Funcionou");
-                    
-                }
-            }
-            System.out.println("\n=======PACOTE=======");
-            System.out.println("Codigos de Barras " + codigosSeparados.get(3) + " ");
-                
-        } */
-    }
-    
+    } 
 }
