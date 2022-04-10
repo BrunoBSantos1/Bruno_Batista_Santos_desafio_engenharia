@@ -155,6 +155,20 @@ public class LeitorQrCoder {
             }
         }
         
+        // PEGANDO OS VENDEDORESS DE CADA PACOTE E ARMAZENANDO EM UMA LIST. PARA DEPOIS VERIFICAR QUANTAS VEZES CADA ELEMENTO(VENDEDOR) SE REPETE NA LISTA
+        // E ASSIM OBTER A QUANTIDADE DE CADA ELEMENTO.
+        for(int i=0; i < valido.size(); i++){
+            String codVendedor = valido.get(i);
+            codVendedor = codVendedor.substring(12,15);
+            listaVendedoresPorPacote.add(codVendedor);
+        }
+        
+        for (String vendedor : listaVendedoresPorPacote) {
+		if (!cont.containsKey(vendedor))
+			cont.put(vendedor, 0);
+		cont.put(vendedor, cont.get(vendedor) + 1);
+	}
+        
         // GERAR RELATORIO DE ACORDO COM DESTINO E TIPO DE PRODUTO
         // E QUE SEJAM VÁLIDOS
         for(int i=0; i < valido.size(); i++){
@@ -350,20 +364,6 @@ public class LeitorQrCoder {
                 ordemCargaRotaNorteJoias.push(valido.get(i));
             }
         }
-        
-        // PEGANDO OS VENDEDORESS DE CADA PACOTE E ARMAZENANDO EM UMA LIST. PARA DEPOIS VERIFICAR QUANTAS VEZES CADA ELEMENTO(VENDEDOR) SE REPETE NA LISTA
-        // E ASSIM OBTER A QUANTIDADE DE CADA ELEMENTO.
-        for(int i=0; i < valido.size(); i++){
-            String codVendedor = valido.get(i);
-            codVendedor = codVendedor.substring(12,15);
-            listaVendedoresPorPacote.add(codVendedor);
-        }
-        
-        for (String nome : listaVendedoresPorPacote) {
-		if (!cont.containsKey(nome))
-			cont.put(nome, 0);
-		cont.put(nome, cont.get(nome) + 1);
-	}
         
         System.out.println("======Questão 1======");
         System.out.println("Centro-Oeste: " + centroOeste.size() + " pacotes");
